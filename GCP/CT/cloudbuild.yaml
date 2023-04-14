@@ -1,0 +1,9 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/beaming-team-376517/garbagenet-trainer/garbagetrain', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/beaming-team-376517/garbagenet-trainer/garbagetrain']
+images:
+- us-central1-docker.pkg.dev/beaming-team-376517/garbagenet-trainer/garbagetrain

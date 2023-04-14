@@ -1,0 +1,31 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+jobs:
+- job:
+  displayName: "Model Training"
+  
+  steps:
+  
+  - task: Docker@0
+    displayName: 'Build an image'
+    inputs:
+      azureSubscription: 'Azure subscription 1(e6d4c51e-0d82-4960-829a-196186580859)'
+      azureContainerRegistry: '{"loginServer":"garbagenettrainer.azurecr.io", "id" : "/subscriptions/e6d4c51e-0d82-4960-829a-196186580859/resourceGroups/ELG5164-Garbagenet/providers/Microsoft.ContainerRegistry/registries/GarbagenetTrainer"}'
+      imageName: 'garbagenet-trainer'
+      includeLatestTag: true
+      
+  - script: |
+      docker run garbagenettrainer.azurecr.io/garbagenet-trainer
+      
+  - task: Docker@0
+    displayName: 'Push an image'
+    inputs:
+      azureSubscription: 'Azure subscription 1(e6d4c51e-0d82-4960-829a-196186580859)'
+      azureContainerRegistry: '{"loginServer":"garbagenettrainer.azurecr.io", "id" : "/subscriptions/e6d4c51e-0d82-4960-829a-196186580859/resourceGroups/ELG5164-Garbagenet/providers/Microsoft.ContainerRegistry/registries/GarbagenetTrainer"}'
+      action: 'Push an image'
+      imageName: 'garbagenet-trainer'
+      includeLatestTag: true

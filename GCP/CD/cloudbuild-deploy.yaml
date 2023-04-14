@@ -1,0 +1,8 @@
+steps:
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=garbagenet.yaml
+  - --image=us-central1-docker.pkg.dev/beaming-team-376517/garbagenet-tensorflow/garbagenet:latest
+  - --location=us-central1
+  - --cluster=garbagenet-cluster
