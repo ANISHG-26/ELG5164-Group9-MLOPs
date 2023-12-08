@@ -12,7 +12,7 @@ The repository is organised in the following structure
   - Endpoint Test: Contains the notebook for testing model hosted on AWS, Azure and GCP
 
 Note: 
-1. AWS scripts will not work as the keys have been rotated for security reasons.
+1. AWS scripts will not work as the keys have been rotated for security reasons. Duh!
 2. On May 5th Azure and GCP scripts will cease to work on account of resource clean up in the respective platforms.
 
 The container images can be found at my Docker Hub: https://hub.docker.com/repository/docker/anish26/elg5164-deliverables/general
